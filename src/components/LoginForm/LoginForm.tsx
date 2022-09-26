@@ -6,8 +6,13 @@ type User = {
   password: string;
 }
 
+const defaultUser: User = {
+  email: '',
+  password: '',
+}
+
 const LoginForm = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User>(defaultUser);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -16,7 +21,7 @@ const LoginForm = () => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setUser({
       ...user,
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   }
 
@@ -30,7 +35,7 @@ const LoginForm = () => {
             id="email"
             type="text"
             onChange={handleChange}
-            value={user?.email}
+            value={user.email}
           />
         </div>
         <div>
@@ -39,7 +44,7 @@ const LoginForm = () => {
             id="password"
             type="password"
             onChange={handleChange}
-            value={user?.password}
+            value={user.password}
           />
         </div>
         <div>

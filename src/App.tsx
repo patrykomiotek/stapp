@@ -4,13 +4,14 @@ import './App.css';
 // import { Text } from './components/Text';
 // import { LoginForm } from './components/LoginForm/LoginForm';
 // import { LoginForm } from './components/LoginForm';
-import { LoginPage } from './pages';
+import { LoginForm } from './components/LoginForm';
+// import { LoginPage } from './pages';
 
 const App = () => {
   return (
     <div className="App">
-      <LoginPage />
-      {/* <LoginForm /> */}
+      {/* <LoginPage /> */}
+      <LoginForm />
       {/* <Generator /> */}
       {/* <Text>Lorem ipsum #2</Text> */}
     </div>

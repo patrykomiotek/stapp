@@ -27,8 +27,8 @@ const App = () => {
       {/* <Generator /> */}
       {/* <Text>Lorem ipsum #2</Text> */}
       <MagicButton
-        ref={buttonElemRef}
         handleMouseEnter={handleMouseHandler}
+        ref={buttonElemRef}
         >
         Click me
       </MagicButton>

@@ -1,58 +1,42 @@
 import './LoginForm.css';
-import { useState, useEffect, FormEvent, ChangeEventHandler } from 'react';
+import { useEffect, ChangeEventHandler, FormEventHandler, Dispatch, SetStateAction } from 'react';
 
-type User = {
-  email: string;
-  password: string;
-  language: string;
+import type { User } from '../../types/User';
+
+type Props = {
+  readonly data: User;
+  readonly setData: Dispatch<SetStateAction<User>>;
+  readonly handleSubmit: FormEventHandler;
 }
 
-const defaultUser: User = {
-  email: '',
-  password: '',
-  language: '',
-}
-
-const LoginForm = () => {
-  const [isSent, setIsSent] = useState(false);
-  const [user, setUser] = useState<User>(defaultUser);
+const LoginFormControlled = (props: Props) => {
+  const { data, setData, handleSubmit }  = props;
 
   useEffect(() => {
     console.log('debug: useEffect - password');
-    if (user.language.includes('kura')) {
-      setUser({
-        ...user,
+    if (data.language.includes('kura')) {
+      setData({
+        ...data,
         password: '***',
       });
     }
-  }, [user.password]);
+  }, [data.password]);
 
   useEffect(() => {
     console.log('debug: useEffect - language');
-    if (user.language.includes('php')) {
-      setUser({
-        ...user,
+    if (data.language.includes('php')) {
+      setData({
+        ...data,
         language: 'python',
       });
     }
-  }, [user.language]);
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setIsSent(true);
-  }
+  }, [data.language]);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setUser({
-      ...user,
+    setData({
+      ...data,
       [event.target.id]: event.target.value,
     });
-  }
-
-  const showFormInfo = () => {
-    if (isSent) {
-      return <p>Form sent {JSON.stringify(user, null, 2)}</p>
-    }
   }
 
   return (
@@ -66,7 +50,7 @@ const LoginForm = () => {
         )
       : ''} */}
       {/* {isSent && <FormInfo />} */}
-      {showFormInfo()}
+      {/* {showFormInfo()} */}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">E-mail</label>
@@ -74,7 +58,7 @@ const LoginForm = () => {
             id="email"
             type="text"
             onChange={handleChange}
-            value={user.email}
+            value={data.email}
           />
         </div>
         <div>
@@ -83,7 +67,7 @@ const LoginForm = () => {
             id="password"
             type="password"
             onChange={handleChange}
-            value={user.password}
+            value={data.password}
           />
         </div>
         <div>
@@ -92,7 +76,7 @@ const LoginForm = () => {
             id="language"
             type="text"
             onChange={handleChange}
-            value={user.language}
+            value={data.language}
           />
         </div>
         <div>
@@ -103,4 +87,4 @@ const LoginForm = () => {
   );
 }
 
-export { LoginForm };
+export { LoginFormControlled };

@@ -5,15 +5,17 @@ import './App.css';
 // import { LoginForm } from './components/LoginForm/LoginForm';
 // import { LoginForm } from './components/LoginForm';
 import { LoginForm } from './components/LoginForm';
+import { MagicButton } from './components/MagicButton';
 // import { LoginPage } from './pages';
 
 const App = () => {
   return (
     <div className="App">
       {/* <LoginPage /> */}
-      <LoginForm />
+      {/* <LoginForm /> */}
       {/* <Generator /> */}
       {/* <Text>Lorem ipsum #2</Text> */}
+      <MagicButton>Click me</MagicButton>
     </div>
   );
 }

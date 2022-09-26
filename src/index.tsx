@@ -10,8 +10,31 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
+
+// const root2 = ReactDOM.createRoot(
+//   document.getElementById('root-2') as HTMLElement
+// );
+// root2.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+// );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root'),
+// );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root-2'),
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

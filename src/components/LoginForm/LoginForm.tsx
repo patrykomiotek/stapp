@@ -1,19 +1,41 @@
 import './LoginForm.css';
-import { useState, FormEvent, ChangeEventHandler } from 'react';
+import { useState, useEffect, FormEvent, ChangeEventHandler } from 'react';
 
 type User = {
   email: string;
   password: string;
+  language: string;
 }
 
 const defaultUser: User = {
   email: '',
   password: '',
+  language: '',
 }
 
 const LoginForm = () => {
   const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState<User>(defaultUser);
+
+  useEffect(() => {
+    console.log('debug: useEffect - password');
+    if (user.language.includes('kura')) {
+      setUser({
+        ...user,
+        password: '***',
+      });
+    }
+  }, [user.password]);
+
+  useEffect(() => {
+    console.log('debug: useEffect - language');
+    if (user.language.includes('php')) {
+      setUser({
+        ...user,
+        language: 'python',
+      });
+    }
+  }, [user.language]);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -62,6 +84,15 @@ const LoginForm = () => {
             type="password"
             onChange={handleChange}
             value={user.password}
+          />
+        </div>
+        <div>
+          <label htmlFor="language">Programming language</label>
+          <input
+            id="language"
+            type="text"
+            onChange={handleChange}
+            value={user.language}
           />
         </div>
         <div>

@@ -37,7 +37,7 @@ const LoginForm = (props: Props) => {
       user.language = languageFieldRef.current.value;
     }
 
-    // Parent::handleSubmit(user)
+    // Parent::handleSubmit(values, { setSubmiting: true })
   }
 
   return (

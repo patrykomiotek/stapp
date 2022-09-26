@@ -8,7 +8,9 @@ type Props = {
 
 // const Text: React.FC = (props) => {
 const Text = (props: Props) => {
-  return (<p>{props.children}</p>);
+  return (
+    <p>{props.children}</p>
+  );
 }
 
 export { Text };

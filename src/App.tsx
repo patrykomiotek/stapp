@@ -1,11 +1,13 @@
 import './App.css';
 
+import { Generator } from './components/Generator';
 import { Text } from './components/Text';
 
 const App = () => {
   return (
     <div className="App">
-      <Text>Ala ma 2 koty</Text>
+      <Generator />
+      <Text>Lorem ipsum #2</Text>
     </div>
   );
 }

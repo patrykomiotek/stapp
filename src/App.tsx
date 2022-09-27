@@ -48,6 +48,9 @@ const App = () => {
           Click me
         </MagicButton> */}
       </AuthProvider>
+      <AuthProvider>
+        <UserPage />
+      </AuthProvider>
     </div>
   );
 }

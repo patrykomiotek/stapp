@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useRef, MouseEventHandler } from 'react';
+import { useRef, useState, MouseEventHandler } from 'react';
 
 // import { Generator, Text } from './components';
 // import { LoginForm } from './components/LoginForm/LoginForm';
@@ -10,8 +10,10 @@ import { useRef, MouseEventHandler } from 'react';
 import { LoginPage } from './pages';
 import { Layout, Header, Footer } from './components/Layout';
 import { Counter } from './components/Counter';
+import { Viewport } from './components/Viewport';
 
 const App = () => {
+  const [show, setShow] = useState(true);
   // const buttonElemRef = useRef<HTMLButtonElement>(null);
 
   // const handleMouseHandler: MouseEventHandler<HTMLButtonElement> = () => {
@@ -23,13 +25,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <Layout
+      {/* <Layout
         header={<Header isLoggedIn={true} />}
         footer={<Footer />}
-      >
+      > */}
         <Counter />
+        {show && <Viewport />}
+        <button onClick={() => setShow((show) => !show)}>Toggle</button>
         {/* <LoginPage /> */}
-      </Layout>
+      {/* </Layout> */}
       {/* <LoginForm /> */}
       {/* <Generator /> */}
       {/* <Text>Lorem ipsum #2</Text> */}

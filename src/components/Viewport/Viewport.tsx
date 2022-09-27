@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import { useViewPort } from '../../hooks/useViewPort';
 
 const Viewport = () => {

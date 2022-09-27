@@ -1,6 +1,6 @@
-import { useState, FormEvent } from 'react'
+import { useState } from 'react'
 
-import { LoginFormControlled } from '../components/LoginForm';
+import { LoginForm } from '../components/LoginForm';
 import type { User } from '../types/User';
 
 const defaultUser: User = {
@@ -13,10 +13,10 @@ const LoginPage = () => {
   const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState<User>(defaultUser);
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = (values: User) => {
+    setUser(values);
     setIsSent(true);
-    console.log('user: ', user);
+    console.log('user: ', values);
   }
 
   const showFormInfo = () => {
@@ -29,10 +29,9 @@ const LoginPage = () => {
     <div>
       <h1>Login page</h1>
       {showFormInfo()}
-      <LoginFormControlled
+      <LoginForm
         data={user}
-        setData={setUser}
-        handleSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       />
     </div>
   );

@@ -6,9 +6,9 @@ import { useRef, MouseEventHandler } from 'react';
 // import { Text } from './components/Text';
 // import { LoginForm } from './components/LoginForm/LoginForm';
 // import { LoginForm } from './components/LoginForm';
-import { LoginForm } from './components/LoginForm';
-import { MagicButton } from './components/MagicButton';
-// import { LoginPage } from './pages';
+// import { LoginForm } from './components/LoginForm';
+// import { MagicButton } from './components/MagicButton';
+import { LoginPage } from './pages';
 
 const App = () => {
   const buttonElemRef = useRef<HTMLButtonElement>(null);
@@ -22,16 +22,16 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <LoginPage /> */}
+      <LoginPage />
       {/* <LoginForm /> */}
       {/* <Generator /> */}
       {/* <Text>Lorem ipsum #2</Text> */}
-      <MagicButton
+      {/* <MagicButton
         handleMouseEnter={handleMouseHandler}
         ref={buttonElemRef}
         >
         Click me
-      </MagicButton>
+      </MagicButton> */}
     </div>
   );
 }

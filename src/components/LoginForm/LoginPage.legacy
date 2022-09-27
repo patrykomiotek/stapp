@@ -1,15 +1,16 @@
 import './LoginForm.css';
-import { useEffect, useRef, FormEvent } from 'react';
+import { useEffect, useRef, ChangeEventHandler, FormEvent, Dispatch, SetStateAction } from 'react';
 
 import type { User } from '../../types/User';
 
 type Props = {
   readonly data?: User;
-  readonly onSubmit: (values: User) => void;
+  readonly setData?: Dispatch<SetStateAction<User>>;
+  // readonly handleSubmit: FormEventHandler;
 }
 
 const LoginForm = (props: Props) => {
-  const { data, onSubmit }  = props;
+  const { data, setData }  = props;
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
   const languageFieldRef = useRef<HTMLInputElement>(null);
@@ -22,9 +23,6 @@ const LoginForm = (props: Props) => {
 
   const handleSubmit = (event: FormEvent<HTMLElement>) => {
     event.preventDefault();
-    const emailField = emailFieldRef.current;
-    const passwordField = passwordFieldRef.current;
-    const languageField = languageFieldRef.current;
 
     const user: User = {
       email: '',
@@ -32,23 +30,14 @@ const LoginForm = (props: Props) => {
       language: '',
     }
 
-    if (emailField) {
-      user.email = emailField.value;
-    }
-
-    if (passwordField) {
-      user.password = passwordField.value;
-    }
-
-    if (languageField) {
-      if (languageField.value.includes('php')) {
-        languageField.style.border = '1px solid red';
+    if (languageFieldRef.current) {
+      if (languageFieldRef.current.value.includes('php')) {
+        languageFieldRef.current.style.border = '1px solid red';
       }
-      user.language = languageField.value;
+      user.language = languageFieldRef.current.value;
     }
 
     // Parent::handleSubmit(values, { setSubmiting: true })
-    onSubmit(user);
   }
 
   return (

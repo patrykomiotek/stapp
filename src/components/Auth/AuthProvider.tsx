@@ -1,15 +1,13 @@
-import { useState, useContext, createContext } from 'react';
+import { useState, useContext, createContext, Dispatch, SetStateAction } from 'react';
+
+import { User } from '../../types/User';
 
 type Auth = {
   isLogged: boolean;
-  user?: {
-    email?: string;
-  }
-  // setIsLogged: (value: boolean) => void;
-  // setIsLogged: Dispatch<SetStateAction<boolean>>;
+  user: User;
   logIn: () => void;
   logOut: () => void;
-  // setUser: Dispatch<SetStateAction<boolean>>;
+  setUser: Dispatch<SetStateAction<User>>;
 }
 
 // 1. create context
@@ -21,13 +19,17 @@ AuthContext.displayName = 'AuthContext';
 // 2. create hook
 const useAuth = () => {
   const [isLogged, setIsLogged] = useState(false);
-  const [_user, setUser] = useState(false);
+  const [user, setUser] = useState<User>({
+    email: '',
+    password: '',
+    language: '',
+  });
 
   const logIn = () => setIsLogged(true);
 
   const logOut = () => setIsLogged(false);
 
-  return { isLogged, setUser, logIn, logOut };
+  return { isLogged, user, setUser, logIn, logOut };
 }
 
 type Props = {
@@ -36,14 +38,15 @@ type Props = {
 
 // 3. return Provider with values form hook
 export const AuthProvider = ({ children }: Props) => {
-  const { isLogged, logIn, logOut } = useAuth();
+  const { isLogged, logIn, logOut, user, setUser } = useAuth();
 
   return (
     <AuthContext.Provider value={{
       isLogged,
       logIn,
       logOut,
-      // setUser
+      user,
+      setUser
     }}>
       {children}
     </AuthContext.Provider>

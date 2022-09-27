@@ -11,11 +11,11 @@ import { LoginPage, UserPage } from './pages';
 import { Layout, Header, Footer } from './components/Layout';
 import { Counter } from './components/Counter';
 import { Viewport } from './components/Viewport';
-import { AuthContext } from './components/Auth';
+import { AuthProvider } from './components/Auth';
 
 const App = () => {
   const [show, setShow] = useState(true);
-  const [isLogged, setIsLogged] = useState(false);
+  
   // const buttonElemRef = useRef<HTMLButtonElement>(null);
 
   // const handleMouseHandler: MouseEventHandler<HTMLButtonElement> = () => {
@@ -27,11 +27,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <AuthContext.Provider value={{
-        isLogged: isLogged,
-        email: '',
-        setIsLogged: setIsLogged,
-      }}>
+      <AuthProvider>
         <UserPage />
         {/* <Layout
           header={<Header isLoggedIn={true} />}
@@ -51,7 +47,7 @@ const App = () => {
           >
           Click me
         </MagicButton> */}
-      </AuthContext.Provider>
+      </AuthProvider>
     </div>
   );
 }

@@ -19,7 +19,7 @@ const LoginPage = () => {
     setUser(values);
     setIsSent(true);
     console.log('user: ', values);
-    context?.setIsLogged(true);
+    context?.logIn();
   }
 
   const showFormInfo = () => {

@@ -1,4 +1,4 @@
-import { createContext, Dispatch, SetStateAction } from 'react';
+import { useContext, createContext, Dispatch, SetStateAction } from 'react';
 
 type Auth = {
   isLogged: boolean;
@@ -12,3 +12,5 @@ export const AuthContext = createContext<Auth | null>(null);
 // AuthContext.Consumer
 
 AuthContext.displayName = 'AuthProvider';
+
+export const useAuthContext = () => useContext(AuthContext);

@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 
 import { LoginForm } from '../components/LoginForm';
 import type { User } from '../types/User';
-import { AuthContext } from '../components/Auth/AuthProvider';
+import { useAuthContext } from '../components/Auth/AuthProvider';
 
 const defaultUser: User = {
   email: '',
@@ -11,7 +11,7 @@ const defaultUser: User = {
 }
 
 const LoginPage = () => {
-  const context = useContext(AuthContext);
+  const context = useAuthContext();
   const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState<User>(defaultUser);
 

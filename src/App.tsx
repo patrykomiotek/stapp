@@ -8,20 +8,26 @@ import { useRef, MouseEventHandler } from 'react';
 // import { LoginForm } from './components/LoginForm';
 // import { MagicButton } from './components/MagicButton';
 import { LoginPage } from './pages';
+import { Layout, Header, Footer } from './components/Layout';
 
 const App = () => {
-  const buttonElemRef = useRef<HTMLButtonElement>(null);
+  // const buttonElemRef = useRef<HTMLButtonElement>(null);
 
-  const handleMouseHandler: MouseEventHandler<HTMLButtonElement> = () => {
-    if (buttonElemRef.current) {
-      buttonElemRef.current.style.background = 'blue';
-      buttonElemRef.current.style.color = 'white';
-    }
-  }
+  // const handleMouseHandler: MouseEventHandler<HTMLButtonElement> = () => {
+  //   if (buttonElemRef.current) {
+  //     buttonElemRef.current.style.background = 'blue';
+  //     buttonElemRef.current.style.color = 'white';
+  //   }
+  // }
 
   return (
     <div className="App">
-      <LoginPage />
+      <Layout
+        header={<Header isLoggedIn={true} />}
+        footer={<Footer />}
+      >
+        <LoginPage />
+      </Layout>
       {/* <LoginForm /> */}
       {/* <Generator /> */}
       {/* <Text>Lorem ipsum #2</Text> */}

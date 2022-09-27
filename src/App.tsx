@@ -13,6 +13,8 @@ import { Counter } from './components/Counter';
 import { Viewport } from './components/Viewport';
 import { AuthProvider } from './components/Auth';
 import { ThemeProvider } from './components/Theme';
+// import { ErrorBoundary } from './components/ErrorBoundary';
+import { ErrorBoundary }  from '@sentry/react';
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -29,30 +31,32 @@ const App = () => {
   return (
     <div className="App">
       <AuthProvider> {/* useContext.Provider */}
-        <ThemeProvider>
-          <Generator />
+        <ErrorBoundary fallback={<p>Error</p>}>
+          {/* <ThemeProvider> */}
+            <Generator />
 
-          <UserPage />
-          <LoginPage />
+            <UserPage />
+            <LoginPage />
 
-          {/* <Layout
-            header={<Header isLoggedIn={true} />}
-            footer={<Footer />}
-          > */}
-          {/* </Layout> */}
-          {/* <LoginForm /> */}
-          {/* <Generator /> */}
-          {/* <Text>Lorem ipsum #2</Text> */}
-          {/* <Counter />
-            {show && <Viewport />}
-            <button onClick={() => setShow((show) => !show)}>Toggle</button> */}
-          {/* <MagicButton
-            handleMouseEnter={handleMouseHandler}
-            ref={buttonElemRef}
-            >
-            Click me
-          </MagicButton> */}
-        </ThemeProvider>
+            {/* <Layout
+              header={<Header isLoggedIn={true} />}
+              footer={<Footer />}
+            > */}
+            {/* </Layout> */}
+            {/* <LoginForm /> */}
+            {/* <Generator /> */}
+            {/* <Text>Lorem ipsum #2</Text> */}
+            {/* <Counter />
+              {show && <Viewport />}
+              <button onClick={() => setShow((show) => !show)}>Toggle</button> */}
+            {/* <MagicButton
+              handleMouseEnter={handleMouseHandler}
+              ref={buttonElemRef}
+              >
+              Click me
+            </MagicButton> */}
+          {/* </ThemeProvider> */}
+        </ErrorBoundary>
       </AuthProvider>
     </div>
   );

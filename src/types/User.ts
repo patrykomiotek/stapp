@@ -3,3 +3,9 @@ export type User = {
   password: string;
   language: string;
 }
+
+export type SuperUser = {
+  email: string;
+  password: string;
+  isAdmin: boolean;
+}

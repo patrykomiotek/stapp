@@ -1,15 +1,17 @@
 import './LoginForm.css';
 import { useEffect, ChangeEventHandler, FormEventHandler, Dispatch, SetStateAction } from 'react';
 
-import type { User } from '../../types/User';
+import type { User, SuperUser } from '../../types/User';
 
-type Props = {
-  readonly data: User;
-  readonly setData: Dispatch<SetStateAction<User>>;
-  readonly handleSubmit: FormEventHandler;
+type Group = User | SuperUser;
+// type Props<T extends Group> = {
+type Props<T> = {
+  readonly data: T;
+  readonly setData: Dispatch<SetStateAction<T>>;
+  readonly handleSubmit?: FormEventHandler;
 }
 
-const LoginFormControlled = (props: Props) => {
+const LoginFormControlled = <T,>(props: Props<T>) => {
   const { data, setData, handleSubmit }  = props;
 
   useEffect(() => {

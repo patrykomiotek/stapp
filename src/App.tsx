@@ -9,6 +9,7 @@ import { useRef, MouseEventHandler } from 'react';
 // import { MagicButton } from './components/MagicButton';
 import { LoginPage } from './pages';
 import { Layout, Header, Footer } from './components/Layout';
+import { Counter } from './components/Counter';
 
 const App = () => {
   // const buttonElemRef = useRef<HTMLButtonElement>(null);
@@ -26,7 +27,8 @@ const App = () => {
         header={<Header isLoggedIn={true} />}
         footer={<Footer />}
       >
-        <LoginPage />
+        <Counter />
+        {/* <LoginPage /> */}
       </Layout>
       {/* <LoginForm /> */}
       {/* <Generator /> */}

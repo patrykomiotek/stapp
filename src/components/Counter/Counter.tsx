@@ -9,11 +9,13 @@ const Counter = () => {
     // unmounting
     // mounting
 
+    // mounting OR updating
     const intervalId = setInterval(() => {
       setCount((value) => value + 1);
     }, 1000);
 
     return () => {
+      // unmounting
       clearInterval(intervalId);
     }
 

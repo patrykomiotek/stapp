@@ -2,7 +2,7 @@ import './App.css';
 
 import { useRef, useState, MouseEventHandler } from 'react';
 
-// import { Generator, Text } from './components';
+import { Generator, Text } from './components';
 // import { LoginForm } from './components/LoginForm/LoginForm';
 // import { LoginForm } from './components/LoginForm';
 import { LoginForm } from './components/LoginForm';
@@ -12,10 +12,11 @@ import { Layout, Header, Footer } from './components/Layout';
 import { Counter } from './components/Counter';
 import { Viewport } from './components/Viewport';
 import { AuthProvider } from './components/Auth';
+import { ThemeProvider } from './components/Theme';
 
 const App = () => {
   const [show, setShow] = useState(true);
-  
+
   // const buttonElemRef = useRef<HTMLButtonElement>(null);
 
   // const handleMouseHandler: MouseEventHandler<HTMLButtonElement> = () => {
@@ -28,29 +29,30 @@ const App = () => {
   return (
     <div className="App">
       <AuthProvider> {/* useContext.Provider */}
-        <UserPage />
-        <LoginPage />
+        <ThemeProvider>
+          <Generator />
 
-        {/* <Layout
-          header={<Header isLoggedIn={true} />}
-          footer={<Footer />}
-        > */}
-        {/* </Layout> */}
-        {/* <LoginForm /> */}
-        {/* <Generator /> */}
-        {/* <Text>Lorem ipsum #2</Text> */}
-        {/* <Counter />
-          {show && <Viewport />}
-          <button onClick={() => setShow((show) => !show)}>Toggle</button> */}
-        {/* <MagicButton
-          handleMouseEnter={handleMouseHandler}
-          ref={buttonElemRef}
-          >
-          Click me
-        </MagicButton> */}
-      </AuthProvider>
-      <AuthProvider>
-        <UserPage />
+          <UserPage />
+          <LoginPage />
+
+          {/* <Layout
+            header={<Header isLoggedIn={true} />}
+            footer={<Footer />}
+          > */}
+          {/* </Layout> */}
+          {/* <LoginForm /> */}
+          {/* <Generator /> */}
+          {/* <Text>Lorem ipsum #2</Text> */}
+          {/* <Counter />
+            {show && <Viewport />}
+            <button onClick={() => setShow((show) => !show)}>Toggle</button> */}
+          {/* <MagicButton
+            handleMouseEnter={handleMouseHandler}
+            ref={buttonElemRef}
+            >
+            Click me
+          </MagicButton> */}
+        </ThemeProvider>
       </AuthProvider>
     </div>
   );

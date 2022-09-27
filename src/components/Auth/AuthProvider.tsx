@@ -16,7 +16,7 @@ type Auth = {
 export const AuthContext = createContext<Auth | null>(null);
 // AuthContext.Provider
 // AuthContext.Consumer
-AuthContext.displayName = 'AuthProvider';
+AuthContext.displayName = 'AuthContext';
 
 // 2. create hook
 const useAuth = () => {

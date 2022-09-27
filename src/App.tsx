@@ -5,7 +5,7 @@ import { useRef, useState, MouseEventHandler } from 'react';
 // import { Generator, Text } from './components';
 // import { LoginForm } from './components/LoginForm/LoginForm';
 // import { LoginForm } from './components/LoginForm';
-// import { LoginForm } from './components/LoginForm';
+import { LoginForm } from './components/LoginForm';
 // import { MagicButton } from './components/MagicButton';
 import { LoginPage, UserPage } from './pages';
 import { Layout, Header, Footer } from './components/Layout';
@@ -15,6 +15,7 @@ import { AuthContext } from './components/Auth';
 
 const App = () => {
   const [show, setShow] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   // const buttonElemRef = useRef<HTMLButtonElement>(null);
 
   // const handleMouseHandler: MouseEventHandler<HTMLButtonElement> = () => {
@@ -27,15 +28,16 @@ const App = () => {
   return (
     <div className="App">
       <AuthContext.Provider value={{
-        isLogged: true,
+        isLogged: isLogged,
         email: '',
+        setIsLogged: setIsLogged,
       }}>
         <UserPage />
         {/* <Layout
           header={<Header isLoggedIn={true} />}
           footer={<Footer />}
         > */}
-          {/* <LoginPage /> */}
+        <LoginPage />
         {/* </Layout> */}
         {/* <LoginForm /> */}
         {/* <Generator /> */}

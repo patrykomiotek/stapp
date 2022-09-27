@@ -1,8 +1,10 @@
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
 
 type Auth = {
   isLogged: boolean;
   email: string;
+  // setIsLogged: (value: boolean) => void;
+  setIsLogged: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext<Auth | null>(null);

@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 import { LoginForm } from '../components/LoginForm';
 import type { User } from '../types/User';
+import { AuthContext } from '../components/Auth/AuthProvider';
 
 const defaultUser: User = {
   email: '',
@@ -10,6 +11,7 @@ const defaultUser: User = {
 }
 
 const LoginPage = () => {
+  const context = useContext(AuthContext);
   const [isSent, setIsSent] = useState(false);
   const [user, setUser] = useState<User>(defaultUser);
 
@@ -17,6 +19,7 @@ const LoginPage = () => {
     setUser(values);
     setIsSent(true);
     console.log('user: ', values);
+    context?.setIsLogged(true);
   }
 
   const showFormInfo = () => {

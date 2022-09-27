@@ -2,8 +2,7 @@ import './App.css';
 
 import { useRef, MouseEventHandler } from 'react';
 
-// import { Generator } from './components/Generator';
-// import { Text } from './components/Text';
+// import { Generator, Text } from './components';
 // import { LoginForm } from './components/LoginForm/LoginForm';
 // import { LoginForm } from './components/LoginForm';
 // import { LoginForm } from './components/LoginForm';

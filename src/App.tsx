@@ -27,13 +27,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <AuthProvider>
+      <AuthProvider> {/* useContext.Provider */}
         <UserPage />
+        <LoginPage />
+
         {/* <Layout
           header={<Header isLoggedIn={true} />}
           footer={<Footer />}
         > */}
-        <LoginPage />
         {/* </Layout> */}
         {/* <LoginForm /> */}
         {/* <Generator /> */}

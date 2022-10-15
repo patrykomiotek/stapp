@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { LoginForm } from '../components/LoginForm';
+import { LoginForm } from '@components/LoginForm';
 // import { LoginFormControlled } from '../components/LoginForm';
 import type { User } from '../types/User';
-import { useAuthContext } from '../components/Auth/AuthProvider';
+import { useAuthContext } from '@components/Auth/AuthProvider';
 
 const defaultUser: User = {
   email: '',

@@ -1,4 +1,4 @@
-import { AuthInfo } from '../components/Auth/AuthInfo';
+import { AuthInfo } from '@components/Auth/AuthInfo';
 
 const UserPage = () => {
   return (

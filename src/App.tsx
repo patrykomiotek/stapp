@@ -32,7 +32,7 @@ const App = () => {
     <div className="App">
       <AuthProvider> {/* useContext.Provider */}
         <ErrorBoundary fallback={<p>Error</p>}>
-          {/* <ThemeProvider> */}
+          <ThemeProvider>
             <Generator />
 
             <UserPage />
@@ -55,7 +55,7 @@ const App = () => {
               >
               Click me
             </MagicButton> */}
-          {/* </ThemeProvider> */}
+          </ThemeProvider>
         </ErrorBoundary>
       </AuthProvider>
     </div>

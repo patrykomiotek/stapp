@@ -1,4 +1,4 @@
-import { useViewPort } from '../../hooks/useViewPort';
+import { useViewPort } from '@hooks/useViewPort';
 
 const Viewport = () => {
   const size = useViewPort();

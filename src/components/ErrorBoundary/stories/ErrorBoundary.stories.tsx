@@ -1,6 +1,6 @@
 import { ComponentMeta } from '@storybook/react';
 
-import { ErrorBoundary } from './ErrorBoundary';
+import { ErrorBoundary } from '../ErrorBoundary';
 import { BuggyComponent } from './BuggyComponent';
 
 export default {

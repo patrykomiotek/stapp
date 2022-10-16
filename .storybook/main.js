@@ -1,4 +1,4 @@
-const path = require("path");
+const aliases = require('../aliases');
 
 module.exports = {
   stories: [
@@ -23,10 +23,7 @@ module.exports = {
   webpackFinal: (config) => {
 		config.resolve.alias = {
 			...config.resolve.alias,
-      '@components': path.resolve(__dirname, '../src/components'),
-      '@hooks': path.resolve(__dirname, '../src/hooks'),
-      '@pages': path.resolve(__dirname, '../src/pages'),
-      '@types': path.resolve(__dirname, '../src/types'),
+      ...aliases,
 		};
 		return config;
 	},

@@ -6,7 +6,7 @@ import { BASE_URL } from '../services/products';
 export const handlers = [
   rest.get<ProductResponse>(`${BASE_URL}/products`, (req, res, ctx) => {
     return res(
-      ctx.delay(2000),
+      // ctx.delay(2000),
       ctx.status(200),
       ctx.json({
         records: [{

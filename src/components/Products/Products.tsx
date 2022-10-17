@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { fetchProducts } from '@services/products';
+// import { fetchProducts } from '@services/products';
+import { fetchProducts } from '../../services/products';
 
 // import type { Product } from '@types/Product';
 import type { Product } from '../../types/Product';

@@ -1,10 +1,7 @@
-import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import type { Product as ProductDto } from '../../types/Product';
 import { fetchProduct } from '../../services/products';
-import { addExtensionMethods } from '@sentry/tracing';
 
 export const Product = () => {
   const params = useParams();
@@ -24,6 +21,7 @@ export const Product = () => {
       <h1>{product?.fields.name}</h1>
       <p>{product?.fields.description}</p>
       <p><span>{product?.fields.price}</span></p>
+      <button onClick={() => refetch()}>Refresh</button>
       <p><Link to="/">Go back</Link></p>
     </div>
   );

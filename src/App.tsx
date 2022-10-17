@@ -1,5 +1,11 @@
 import './App.css';
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
+
 import { useRef, useState, MouseEventHandler } from 'react';
 
 import { Generator, Text } from './components';
@@ -32,12 +38,17 @@ const App = () => {
   return (
     <div className="App">
       <AuthProvider> {/* useContext.Provider */}
-        <ErrorBoundary fallback={<p>Error</p>}>
+        {/* <ErrorBoundary fallback={<p>Error</p>}> */}
           <ThemeProvider>
-            {/* <Generator /> */}
-            {/* <Products /> */}
-            <Product />
 
+            <Router>
+              <Routes>
+                <Route path='/products/:id' element={<Product />} />
+                <Route path='/' element={<Products />} />
+              </Routes>
+            </Router>
+
+            {/* <Generator /> */}
             {/* <Viewport /> */}
             {/* <UserPage /> */}
             {/* <LoginPage /> */}
@@ -60,7 +71,7 @@ const App = () => {
               Click me
             </MagicButton> */}
           </ThemeProvider>
-        </ErrorBoundary>
+        {/* </ErrorBoundary> */}
       </AuthProvider>
     </div>
   );

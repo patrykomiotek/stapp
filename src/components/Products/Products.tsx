@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 // import { fetchProducts } from '@services/products';
 import { fetchProducts } from '../../services/products';
 
@@ -19,7 +20,8 @@ export const Products = () => {
     <div>
       {products && products.map((product) => (
         <div key={product.id}>
-          {product.fields.name} {product.fields.price}
+          <h2><Link to={`/products/${product.id}`}>{product.fields.name}</Link></h2>
+          <p>{product.fields.price}</p>
         </div>
       ))}
     </div>

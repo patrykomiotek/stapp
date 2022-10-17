@@ -12,7 +12,6 @@ export const Product = () => {
     try {
       const response = await fetchProduct('rec9poYzLSg6b61Nh');
       setProduct(response.data);
-      setIsLoading(false);
     } catch (e) {
       setIsError(true);
     } finally {

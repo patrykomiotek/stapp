@@ -40,6 +40,7 @@
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.10.2",
+    "msw": "^0.47.4",
     "prop-types": "^15.8.1",
     "ts-node": "^10.9.1",
     "webpack": "^5.74.0"
@@ -50,7 +51,8 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "msw:update": "npx msw init public --no-save"
   },
   "eslintConfig": {
     "extends": [

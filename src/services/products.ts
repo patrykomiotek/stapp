@@ -3,14 +3,16 @@ import type { AxiosResponse } from 'axios';
 
 import type { Product } from '../types/Product';
 
+export const BASE_URL = 'https://api.airtable.com/v0/app4XdB26d9uT2xal';
+
 const api = axios.create({
-  baseURL: 'https://api.airtable.com/v0/app4XdB26d9uT2xal',
+  baseURL: BASE_URL,
   headers: {
     Authorization: 'Bearer keyaXt4qtmUYjZljo',
   }
 });
 
-type ProductResponse = {
+export type ProductResponse = {
   records: Product[]
 }
 

@@ -42,6 +42,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.10.2",
     "msw": "^0.47.4",
+    "msw-storybook-addon": "^1.6.3",
     "prop-types": "^15.8.1",
     "ts-node": "^10.9.1",
     "webpack": "^5.74.0"

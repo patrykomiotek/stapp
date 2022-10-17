@@ -34,6 +34,11 @@ describe('Product component', () => {
         }]
       }
     });
+
+    // const renderWithProvider = () => (
+    //   render(<Provider><Products /></Provider>);
+    // );
+
     render(<Products />);
     screen.debug();
 

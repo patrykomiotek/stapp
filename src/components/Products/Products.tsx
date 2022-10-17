@@ -9,7 +9,10 @@ export const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProducts().then((response) => console.log(response.data));
+    fetchProducts().then((response) => {
+      console.log(response.data.records);
+      setProducts(response.data.records);
+    });
   }, []);
 
   return (

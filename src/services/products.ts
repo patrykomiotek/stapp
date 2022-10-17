@@ -10,7 +10,11 @@ const api = axios.create({
   }
 });
 
-export const fetchProducts = (): Promise<AxiosResponse<Product[]>> => {
+type ProductResponse = {
+  records: Product[]
+}
+
+export const fetchProducts = (): Promise<AxiosResponse<ProductResponse>> => {
   return api.get('/products');
 
   // try {

@@ -1,31 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 import type { Product as ProductDto } from '../../types/Product';
 import { fetchProduct } from '../../services/products';
+import { addExtensionMethods } from '@sentry/tracing';
 
 export const Product = () => {
-  const [product, setProduct] = useState<ProductDto | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
   const params = useParams();
-
-  const fetchData = async () => {
-    try {
-      if (params.id) {
-        const response = await fetchProduct(params.id);
-        setProduct(response.data);
-      }
-    } catch (e) {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { isLoading, isError, data: response, refetch } = useQuery(['orders', params.id], () => fetchProduct(params.id));
+  const product = response?.data;
 
   if (isLoading) {
     return <p>Loading....</p>

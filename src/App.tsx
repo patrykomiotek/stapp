@@ -1,4 +1,6 @@
 import './App.css';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import {
   BrowserRouter as Router,
@@ -23,6 +25,8 @@ import { ThemeProvider } from './components/Theme';
 import { ErrorBoundary }  from '@sentry/react';
 import { Product, Products } from '@components/Products';
 
+const queryClient = new QueryClient();
+
 const App = () => {
   const [show, setShow] = useState(true);
 
@@ -37,42 +41,45 @@ const App = () => {
 
   return (
     <div className="App">
-      <AuthProvider> {/* useContext.Provider */}
-        {/* <ErrorBoundary fallback={<p>Error</p>}> */}
-          <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider> {/* useContext.Provider */}
+          <ErrorBoundary fallback={<p>Error</p>}>
+            <ThemeProvider>
 
-            <Router>
-              <Routes>
-                <Route path='/products/:id' element={<Product />} />
-                <Route path='/' element={<Products />} />
-              </Routes>
-            </Router>
+              <Router>
+                <Routes>
+                  <Route path='/products/:id' element={<Product />} />
+                  <Route path='/' element={<Products />} />
+                </Routes>
+              </Router>
 
-            {/* <Generator /> */}
-            {/* <Viewport /> */}
-            {/* <UserPage /> */}
-            {/* <LoginPage /> */}
+              {/* <Generator /> */}
+              {/* <Viewport /> */}
+              {/* <UserPage /> */}
+              {/* <LoginPage /> */}
 
-            {/* <Layout
-              header={<Header isLoggedIn={true} />}
-              footer={<Footer />}
-            > */}
-            {/* </Layout> */}
-            {/* <LoginForm /> */}
-            {/* <Generator /> */}
-            {/* <Text>Lorem ipsum #2</Text> */}
-            {/* <Counter />
-              {show && <Viewport />}
-              <button onClick={() => setShow((show) => !show)}>Toggle</button> */}
-            {/* <MagicButton
-              handleMouseEnter={handleMouseHandler}
-              ref={buttonElemRef}
-              >
-              Click me
-            </MagicButton> */}
-          </ThemeProvider>
-        {/* </ErrorBoundary> */}
-      </AuthProvider>
+              {/* <Layout
+                header={<Header isLoggedIn={true} />}
+                footer={<Footer />}
+              > */}
+              {/* </Layout> */}
+              {/* <LoginForm /> */}
+              {/* <Generator /> */}
+              {/* <Text>Lorem ipsum #2</Text> */}
+              {/* <Counter />
+                {show && <Viewport />}
+                <button onClick={() => setShow((show) => !show)}>Toggle</button> */}
+              {/* <MagicButton
+                handleMouseEnter={handleMouseHandler}
+                ref={buttonElemRef}
+                >
+                Click me
+              </MagicButton> */}
+            </ThemeProvider>
+          </ErrorBoundary>
+        </AuthProvider>
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
     </div>
   );
 }

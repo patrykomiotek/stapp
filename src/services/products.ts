@@ -25,6 +25,6 @@ export const fetchProducts = (): Promise<AxiosResponse<ProductResponse>> => {
   // }
 }
 
-export const fetchProduct = (id: string): Promise<AxiosResponse<Product>> => {
+export const fetchProduct = (id: string | undefined): Promise<AxiosResponse<Product>> => {
   return api.get(`/products/${id}`);
 }

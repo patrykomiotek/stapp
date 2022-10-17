@@ -18,7 +18,7 @@ export const Products = () => {
   return (
     <div>
       {products && products.map((product) => (
-        <div>
+        <div key={product.id}>
           {product.fields.name} {product.fields.price}
         </div>
       ))}

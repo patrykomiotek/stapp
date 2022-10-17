@@ -15,7 +15,7 @@ import { AuthProvider } from './components/Auth';
 import { ThemeProvider } from './components/Theme';
 // import { ErrorBoundary } from './components/ErrorBoundary';
 import { ErrorBoundary }  from '@sentry/react';
-import { Products } from '@components/Products';
+import { Product, Products } from '@components/Products';
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -35,7 +35,8 @@ const App = () => {
         <ErrorBoundary fallback={<p>Error</p>}>
           <ThemeProvider>
             {/* <Generator /> */}
-            <Products />
+            {/* <Products /> */}
+            <Product />
 
             {/* <Viewport /> */}
             {/* <UserPage /> */}

@@ -25,6 +25,7 @@ import { ThemeProvider } from './components/Theme';
 import { ErrorBoundary }  from '@sentry/react';
 import { Product, Products } from '@components/Products';
 import { Cases, Case } from '@components/Cases';
+import { ConsoleGreeting } from '@components/ConsoleGreeting';
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,8 @@ const App = () => {
                   <Route path='/' element={<Products />} />
                 </Routes>
               </Router>
+
+              <ConsoleGreeting name="Hello!" />
 
               {/* <Generator /> */}
               {/* <Viewport /> */}

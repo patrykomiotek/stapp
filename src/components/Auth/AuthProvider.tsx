@@ -4,9 +4,11 @@ import { User } from '../../types/User';
 
 type Auth = {
   isLogged: boolean;
+  tmp: string;
   user: User;
   logIn: () => void;
   logOut: () => void;
+  toggleLogin: () => void;
   setUser: Dispatch<SetStateAction<User>>;
 }
 
@@ -29,7 +31,9 @@ const useAuth = () => {
 
   const logOut = () => setIsLogged(false);
 
-  return { isLogged, user, setUser, logIn, logOut };
+  const toggleLogin = () => setIsLogged(value => !value);
+
+  return { isLogged, user, setUser, logIn, logOut, toggleLogin, tmp: 'hallo' };
 }
 
 type Props = {
@@ -38,15 +42,17 @@ type Props = {
 
 // 3. return Provider with values form hook
 export const AuthProvider = ({ children }: Props) => {
-  const { isLogged, logIn, logOut, user, setUser } = useAuth();
+  const { isLogged, logIn, logOut, user, setUser, toggleLogin, tmp } = useAuth();
 
   return (
     <AuthContext.Provider value={{
       isLogged,
       logIn,
       logOut,
+      toggleLogin,
       user,
-      setUser
+      setUser,
+      tmp,
     }}>
       {children}
     </AuthContext.Provider>

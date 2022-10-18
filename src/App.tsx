@@ -24,6 +24,7 @@ import { ThemeProvider } from './components/Theme';
 // import { ErrorBoundary } from './components/ErrorBoundary';
 import { ErrorBoundary }  from '@sentry/react';
 import { Product, Products } from '@components/Products';
+import { Cases, Case } from '@components/Cases';
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,8 @@ const App = () => {
                   <Route path='/products/:id' element={<Product />} />
                   <Route path='/user' element={<UserPage />} />
                   <Route path='/login' element={<LoginPage />} />
+                  <Route path='/case/:id' element={<Case />} />
+                  <Route path='/cases' element={<Cases />} />
                   <Route path='/' element={<Products />} />
                 </Routes>
               </Router>

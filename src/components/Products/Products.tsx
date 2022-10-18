@@ -8,18 +8,21 @@ import type { Product } from '../../types/Product';
 
 export const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetchProducts().then((response) => {
-      console.log('Response: ', response.data.records);
+      // console.log('Response: ', response.data.records);
       setProducts(response.data.records);
     }).catch(e => {
-      console.log('product error: ', e);
+      // console.log('product error: ', e);
+      setIsError(true);
     });
   }, []);
 
   return (
     <div>
+      {isError ?? <p>Error!</p>}
       {products && products.map((product) => (
         <div key={product.id}>
           {/* <h2><Link to={`/products/${product.id}`}>{product.fields.name}</Link></h2> */}

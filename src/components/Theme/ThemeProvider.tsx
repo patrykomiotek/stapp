@@ -6,7 +6,7 @@ enum ThemeName {
   DARK = 'dark'
 }
 
-const useTheme = () => {
+export const useTheme = () => {
   // const [theme, setTheme] = useState<ThemeName>('light');
   const [theme, setTheme] = useState<ThemeName>(ThemeName.LIGHT);
 

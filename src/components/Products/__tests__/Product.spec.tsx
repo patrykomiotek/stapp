@@ -1,58 +1,44 @@
-import { render, screen } from "@testing-library/react";
-import { Products } from "../Products";
+import { render, screen } from '@testing-library/react';
+import { QueryClientProvider, QueryClient, useQuery } from '@tanstack/react-query';
 
-import { fetchProducts } from '../../../services/products';
+import { Product } from '../Product';
 
-const mockedFetchProducts = fetchProducts as jest.Mock;
+const queryClient = new QueryClient();
+const mockedUseQuery = useQuery as jest.Mock;
 
-jest.mock('../../../services/products', () => {
+jest.mock('@tanstack/react-query', () => {
+  const originalModule = jest.requireActual('@tanstack/react-query');
   return {
-    fetchProducts: jest.fn()
+    ...originalModule,
+    useQuery: () => ({
+      isLoading: false,
+      isError: true,
+      data: {},
+      refetch: jest.fn(),
+    }),
+    // useQuery: jest.fn()
   }
 });
 
+const renderComponent = () => render(
+  <QueryClientProvider client={queryClient}><Product /></QueryClientProvider>
+);
+
 describe('Product component', () => {
+  it.skip('Should display indicator', () => {
+    renderComponent();
 
-  // with mock service worker
-  // it('should have Prod2', async () => {
-  //   render(<Products />);
-  //   screen.debug();
-
-  //   expect(await screen.findByText('Prod2')).toBeInTheDocument();
-  // });
-
-  // without mock service worker
-  it('should have Prod2', async () => {
-    mockedFetchProducts.mockResolvedValue({
-      data: {
-        records: [{
-          id: 1,
-          fields: {
-            name: 'Prod2',
-            price: 123
-          }
-        }]
-      }
-    });
-
-    // const renderWithProvider = () => (
-    //   render(<Provider><Products /></Provider>);
-    // );
-
-    render(<Products />);
-    screen.debug();
-
-    expect(await screen.findByText('Prod2')).toBeInTheDocument();
-    screen.debug();
+    expect(screen.getByText(/Loading..../ig)).toBeInTheDocument();
   });
-
-  it('should have error', async () => {
-    mockedFetchProducts.mockRejectedValue({});
-
-    render(<Products />);
-    screen.debug();
-
-    expect(await screen.findByText('Prod2')).toBeInTheDocument();
-    screen.debug();
+  it('Should display error', () => {
+    // mockedUseQuery.mockReturnValue({
+    //   isLoading: false,
+    //   isError: true,
+    //   data: {},
+    //   refetch: jest.fn(),
+    // });
+    renderComponent();
+    expect(screen.getByText(/Oh no, error!/ig)).toBeInTheDocument();
   });
+  it.todo('Should display header with data');
 });

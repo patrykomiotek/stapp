@@ -26,6 +26,7 @@ import { ErrorBoundary }  from '@sentry/react';
 import { Product, Products } from '@components/Products';
 import { Cases, Case } from '@components/Cases';
 import { ConsoleGreeting } from '@components/ConsoleGreeting';
+import { MouseProviderComponent } from '@components/Patterns/MouseProviderComponent';
 
 const queryClient = new QueryClient();
 
@@ -59,7 +60,8 @@ const App = () => {
                 </Routes>
               </Router>
 
-              <ConsoleGreeting name="Hello!" />
+              {/* <ConsoleGreeting name="Hello!" /> */}
+              <MouseProviderComponent />
 
               {/* <Generator /> */}
               {/* <Viewport /> */}
